@@ -239,8 +239,11 @@ function updateCount(){ document.getElementById("count").textContent = mine.size
 
 function render(){
   const root = document.getElementById("regions"); root.textContent = "";
-  document.getElementById("route").hidden = !(filter === "all" || filter === "route");
-  if(filter === "route"){ document.getElementById("route").scrollIntoView(); return; }
+  const routeSec = document.getElementById("route");
+  if(routeSec){
+    routeSec.hidden = !(filter === "all" || filter === "route");
+    if(filter === "route"){ routeSec.scrollIntoView(); return; }
+  }
   for(const r of ["north","south"]){
     if((filter === "north" || filter === "south") && filter !== r) continue;
     let items = PLACES.filter(p => p.r === r);
@@ -268,6 +271,7 @@ function render(){
 }
 function renderRoute(){
   const legs = document.getElementById("legs");
+  if(!legs) return;
   for(const L of LEGS){
     const el = document.createElement("div"); el.className = "leg";
     const h = document.createElement("h3"); h.textContent = L.title;
