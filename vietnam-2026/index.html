@@ -7,7 +7,7 @@
 <meta name="description" content="Nature spots in north and south Vietnam for our 29 Nov – 13 Dec trip, with photos and a recommended route.">
 <meta name="robots" content="noindex">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Young+Serif&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Lora:wght@500;600&family=Young+Serif&display=swap">
 <style>
 /* Field-guide layout: hero, region tabs, photo cards in a responsive grid, then a day-by-day route */
 :root{
@@ -51,11 +51,12 @@ h3.group{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(
 .photos.one{grid-template-columns:1fr;grid-template-rows:1fr}
 .photos.two{grid-template-rows:1fr}
 .photos.two a:first-child{grid-row:auto}
+.photos .empty a{color:var(--karst)}
 .photos .empty{grid-column:1/-1;grid-row:1/-1;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:16px}
 .body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
 .title-row{display:flex;justify-content:space-between;gap:10px;align-items:start}
 .name{font-weight:700;font-size:17px;margin:0;line-height:1.3}
-.vn{display:block;font-family:var(--display);color:var(--karst);font-size:15px;font-weight:400}
+.vn{display:block;font-family:"Lora", Georgia, serif;color:var(--karst);font-size:15px;font-weight:400}
 .badge{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--karst-soft);color:var(--karst);white-space:nowrap}
 .desc{margin:0}
 .facts{display:grid;gap:2px;font-size:13px;color:var(--muted)}
@@ -125,28 +126,28 @@ const REGIONS = {
 };
 const GROUPS = { cb: "Cao Bang & Quang Ninh", other: "Elsewhere in the north", south: "Around Ho Chi Minh City" };
 const PLACES = [
-  {id:"ban-gioc", r:"north", g:"cb", route:true, name:"Ban Gioc Waterfall", vn:"Thác Bản Giốc", cq:"Ban Gioc waterfall", desc:"Vietnam's biggest waterfall, right on the China border. A local favourite that few foreigners reach.", time:"Half day (part of 2–3 days in Cao Bang)", from:"~360 km from Hanoi; private car or 7.5–10 hr bus", dec:"Gentler flow but clear blue water; 12–20°C.", map:"Thác Bản Giốc, Cao Bằng"},
-  {id:"nguom-ngao", r:"north", g:"cb", route:true, name:"Nguom Ngao Cave", vn:"Động Ngườm Ngao", cq:"Nguom Ngao cave", desc:"Huge limestone cave about 3 km from Ban Gioc, with around 1 km of lit walkway through the chambers.", time:"1–1.5 hours; ~45,000 VND entry", from:"3 km from Ban Gioc", dec:"Cool and damp inside; wear shoes with grip.", map:"Động Ngườm Ngao, Cao Bằng"},
-  {id:"phong-nam", r:"north", g:"cb", route:true, name:"Phong Nam Valley", vn:"Thung lũng Phong Nậm", cq:"Phong Nam valley Cao Bang", desc:"Quiet valley of rice fields and limestone peaks near Ban Gioc. Very few tourists.", time:"Half day", from:"Near Ban Gioc", dec:"Especially picturesque in December.", map:"Phong Nậm, Cao Bằng"},
-  {id:"thang-hen", r:"north", g:"cb", route:true, name:"Thang Hen Lake & Ma Phuc Pass", vn:"Hồ Thang Hen", cq:"Thang Hen lake", desc:"A chain of mountain lakes among karst peaks, reached over the winding Ma Phuc Pass switchbacks.", time:"Half day", from:"Cao Bang province", dec:"Clear, dry-season mountain views.", map:"Hồ Thang Hen, Cao Bằng"},
-  {id:"bai-tu-long", r:"north", g:"cb", route:true, name:"Bai Tu Long Bay cruise", vn:"Vịnh Bái Tử Long", cq:"Bai Tu Long Bay", desc:"The same limestone islands as Ha Long Bay with far fewer boats. Overnight cruise with kayaking and caves.", time:"2 days / 1 night", from:"Quang Ninh, a few hours from Hanoi", dec:"Misty mornings; bring a windproof jacket for the deck.", map:"Vịnh Bái Tử Long, Quảng Ninh"},
-  {id:"yen-tu", r:"north", g:"cb", route:true, name:"Yen Tu Mountain", vn:"Núi Yên Tử", cq:"Yen Tu", desc:"Cable car up a forested mountain to Buddhist temples and stupas, some over 700 years old.", time:"Half day", from:"Between Ha Long and Hanoi", dec:"Cool and calm; good year-end visit.", map:"Yên Tử, Quảng Ninh"},
-  {id:"binh-lieu", r:"north", g:"cb", name:"Binh Lieu border trail", vn:"Bình Liêu", cq:"Binh Lieu Quang Ninh", desc:"Remote mountain district with a scenic trail along the border, Dao and Tay villages and waterfalls.", time:"1–2 days", from:"Quang Ninh, ~4 hrs from Hanoi", dec:"White reed grass season runs into early winter.", map:"Bình Liêu, Quảng Ninh"},
-  {id:"ba-be", r:"north", g:"cb", name:"Ba Be Lake", vn:"Hồ Ba Bể", cq:"Ba Be lake", desc:"Vietnam's largest natural lake, inside a national park. Boat trips, caves and homestays with Tay families.", time:"1–2 nights", from:"Bac Kan, pairs with Cao Bang", dec:"Quiet and uncrowded.", map:"Hồ Ba Bể, Bắc Kạn"},
-  {id:"ha-giang", r:"north", g:"other", name:"Ha Giang Loop", vn:"Hà Giang", cq:"Ma Pi Leng pass", desc:"3–4 day motorbike loop (ride pillion with an easy rider) through Ma Pi Leng Pass, the Nho Que River canyon and the Dong Van plateau.", time:"3–4 days", from:"Overnight bus from Hanoi", dec:"Buckwheat flower season. The coldest option.", map:"Đồng Văn, Hà Giang"},
-  {id:"ha-long", r:"north", g:"other", name:"Ha Long Bay", vn:"Vịnh Hạ Long", cq:"Ha Long Bay", desc:"The UNESCO icon: thousands of karst islands, best on an overnight cruise. Lan Ha Bay is the quieter side.", time:"2 days / 1 night", from:"Quang Ninh, a few hours from Hanoi", dec:"Fog is common; busy and pricier in December.", map:"Vịnh Hạ Long, Quảng Ninh"},
-  {id:"ninh-binh", r:"north", g:"other", name:"Ninh Binh (Trang An & Tam Coc)", vn:"Ninh Bình", cq:"Trang An Ninh Binh", desc:"\"Ha Long Bay on land\": row-boat rides through limestone caves and rivers, plus the Hang Mua climb for the dragon-ridge view.", time:"1–2 nights", from:"~2 hrs from Hanoi", dec:"Mildest of the north. Rice fields are bare this month.", map:"Tràng An, Ninh Bình"},
-  {id:"sapa", r:"north", g:"other", name:"Sapa & Fansipan", vn:"Sa Pa", cq:"Sa Pa rice terraces", desc:"Treks through Muong Hoa valley and hill-tribe villages, and a cable car up Fansipan, the Roof of Indochina.", time:"2 nights", from:"Night bus or train from Hanoi", dec:"Frosty and moody; can hit 0°C at night.", map:"Sa Pa, Lào Cai"},
-  {id:"moc-chau", r:"north", g:"other", name:"Moc Chau Plateau", vn:"Mộc Châu", cq:"Moc Chau tea", desc:"Rolling tea hills, plum and mustard-flower fields. A weekend favourite for Hanoi locals.", time:"1–2 nights", from:"West of Hanoi", dec:"One of its prettiest months for flowers.", map:"Mộc Châu, Sơn La"},
-  {id:"pu-luong", r:"north", g:"other", name:"Pu Luong & Mai Chau", vn:"Pù Luông", cq:"Pu Luong", desc:"Valleys of stilt houses and bamboo bridges, eco-lodges and easy cycling. Gentle and relaxing.", time:"1–2 nights", from:"Southwest of Hanoi", dec:"Rice not planted yet, but still green hills.", map:"Pù Luông, Thanh Hóa"},
-  {id:"mui-ne", r:"south", g:"south", route:true, name:"Mui Ne sand dunes", vn:"Mũi Né", cq:"Mui Ne sand dunes", desc:"Sunrise jeep tour on the White Dunes, Red Dunes at sunset, the Fairy Stream walk and the fishing village.", time:"1 night", from:"3–4 hrs by car or train from HCMC (no flights yet)", dec:"Dry and windy; great for dunes and kitesurfing.", map:"Đồi Cát Trắng, Mũi Né"},
-  {id:"can-tho", r:"south", g:"south", route:true, name:"Can Tho floating market", vn:"Chợ nổi Cái Răng", cq:"Cai Rang floating market", desc:"The Mekong Delta at its best: Cai Rang floating market at dawn, then canal boat rides and fruit orchards.", time:"1 night", from:"Fly direct from Hanoi (~2h10), or ~3.5 hrs from HCMC", dec:"Dry season, easy boat days.", map:"Chợ nổi Cái Răng, Cần Thơ"},
-  {id:"ben-tre", r:"south", g:"south", name:"Ben Tre coconut canals", vn:"Bến Tre", cq:"Ben Tre coconut", desc:"Sampan rides through coconut-palm canals, local workshops and orchards. The easy Mekong taster.", time:"Day trip", from:"Close to HCMC", dec:"Good choice if Can Tho doesn't fit.", map:"Bến Tre"},
-  {id:"tra-su", r:"south", g:"south", name:"Tra Su Cassia Forest", vn:"Rừng tràm Trà Sư", cq:"Tra Su", desc:"Flooded melaleuca forest explored by small boat under a green duckweed carpet, with lots of birdlife.", time:"Half day", from:"An Giang, pair with Can Tho", dec:"Still green after the flood season.", map:"Rừng tràm Trà Sư, An Giang"},
-  {id:"can-gio", r:"south", g:"south", name:"Can Gio Mangrove Forest", vn:"Rừng Sác Cần Giờ", cq:"Can Gio mangrove", desc:"UNESCO biosphere reserve inside HCMC: boat rides through mangroves, monkey island and a bat swamp.", time:"Day trip", from:"~2 hrs from central HCMC", dec:"Easy first-days trip.", map:"Rừng Sác, Cần Giờ"},
-  {id:"cat-tien", r:"south", g:"south", name:"Cat Tien National Park", vn:"Vườn quốc gia Cát Tiên", cq:"Cat Tien National Park", desc:"Real lowland rainforest: jungle treks, cycling, gibbon and bear rescue centres, Crocodile Lake.", time:"1–2 nights", from:"~4 hrs from HCMC", dec:"Dry season means much better trails.", map:"Vườn quốc gia Cát Tiên"},
-  {id:"da-lat", r:"south", g:"south", name:"Da Lat highlands", vn:"Đà Lạt", cq:"Da Lat", desc:"Pine forests, waterfalls (Datanla, Pongour), lakes, coffee farms, canyoning and Langbiang peak.", time:"2–3 nights", from:"Fly ~50 min from HCMC; direct flights to Hanoi too", dec:"Wild sunflower season; cool 15–24°C.", map:"Đà Lạt, Lâm Đồng"},
-  {id:"ba-den", r:"south", g:"south", name:"Ba Den Mountain + Cu Chi", vn:"Núi Bà Đen", cq:"Ba Den mountain Tay Ninh", desc:"Cable car up the south's highest peak for views over the plains, combined with the Cu Chi Tunnels the same day.", time:"Day trip", from:"Tay Ninh, northwest of HCMC", dec:"Clear dry-season views.", map:"Núi Bà Đen, Tây Ninh"}
+  {id:"ban-gioc", en:"Ban Gioc–Detian Falls", viw:"Thác Bản Giốc", r:"north", g:"cb", route:true, name:"Ban Gioc Waterfall", vn:"Thác Bản Giốc", cq:"Ban Gioc waterfall", desc:"Vietnam's biggest waterfall, right on the China border. A local favourite that few foreigners reach.", time:"Half day (part of 2–3 days in Cao Bang)", from:"~360 km from Hanoi; private car or 7.5–10 hr bus", dec:"Gentler flow but clear blue water; 12–20°C.", map:"Thác Bản Giốc, Cao Bằng"},
+  {id:"nguom-ngao", en:"", viw:"Động Ngườm Ngao", r:"north", g:"cb", route:true, name:"Nguom Ngao Cave", vn:"Động Ngườm Ngao", cq:"Nguom Ngao cave", desc:"Huge limestone cave about 3 km from Ban Gioc, with around 1 km of lit walkway through the chambers.", time:"1–1.5 hours; ~45,000 VND entry", from:"3 km from Ban Gioc", dec:"Cool and damp inside; wear shoes with grip.", map:"Động Ngườm Ngao, Cao Bằng"},
+  {id:"phong-nam", en:"", viw:"Phong Nậm, Trùng Khánh", r:"north", g:"cb", route:true, name:"Phong Nam Valley", vn:"Thung lũng Phong Nậm", cq:"Trung Khanh Cao Bang", desc:"Quiet valley of rice fields and limestone peaks near Ban Gioc. Very few tourists.", time:"Half day", from:"Near Ban Gioc", dec:"Especially picturesque in December.", map:"Phong Nậm, Cao Bằng"},
+  {id:"thang-hen", en:"", viw:"Hồ Thang Hen", r:"north", g:"cb", route:true, name:"Thang Hen Lake & Ma Phuc Pass", vn:"Hồ Thang Hen", cq:"Thang Hen", desc:"A chain of mountain lakes among karst peaks, reached over the winding Ma Phuc Pass switchbacks.", time:"Half day", from:"Cao Bang province", dec:"Clear, dry-season mountain views.", map:"Hồ Thang Hen, Cao Bằng"},
+  {id:"bai-tu-long", en:"Bai Tu Long Bay", viw:"Vịnh Bái Tử Long", r:"north", g:"cb", route:true, name:"Bai Tu Long Bay cruise", vn:"Vịnh Bái Tử Long", cq:"Bai Tu Long", desc:"The same limestone islands as Ha Long Bay with far fewer boats. Overnight cruise with kayaking and caves.", time:"2 days / 1 night", from:"Quang Ninh, a few hours from Hanoi", dec:"Misty mornings; bring a windproof jacket for the deck.", map:"Vịnh Bái Tử Long, Quảng Ninh"},
+  {id:"yen-tu", en:"Yên Tử", viw:"Yên Tử", r:"north", g:"cb", route:true, name:"Yen Tu Mountain", vn:"Núi Yên Tử", cq:"Yen Tu", desc:"Cable car up a forested mountain to Buddhist temples and stupas, some over 700 years old.", time:"Half day", from:"Between Ha Long and Hanoi", dec:"Cool and calm; good year-end visit.", map:"Yên Tử, Quảng Ninh"},
+  {id:"binh-lieu", en:"Bình Liêu district", viw:"Bình Liêu", r:"north", g:"cb", name:"Binh Lieu border trail", vn:"Bình Liêu", cq:"Binh Lieu Quang Ninh", desc:"Remote mountain district with a scenic trail along the border, Dao and Tay villages and waterfalls.", time:"1–2 days", from:"Quang Ninh, ~4 hrs from Hanoi", dec:"White reed grass season runs into early winter.", map:"Bình Liêu, Quảng Ninh"},
+  {id:"ba-be", en:"Ba Bể Lake", viw:"Hồ Ba Bể", r:"north", g:"cb", name:"Ba Be Lake", vn:"Hồ Ba Bể", cq:"Ba Be lake", desc:"Vietnam's largest natural lake, inside a national park. Boat trips, caves and homestays with Tay families.", time:"1–2 nights", from:"Bac Kan, pairs with Cao Bang", dec:"Quiet and uncrowded.", map:"Hồ Ba Bể, Bắc Kạn"},
+  {id:"ha-giang", en:"Mã Pí Lèng Pass", viw:"Mã Pí Lèng", r:"north", g:"other", name:"Ha Giang Loop", vn:"Hà Giang", cq:"Ma Pi Leng pass", desc:"3–4 day motorbike loop (ride pillion with an easy rider) through Ma Pi Leng Pass, the Nho Que River canyon and the Dong Van plateau.", time:"3–4 days", from:"Overnight bus from Hanoi", dec:"Buckwheat flower season. The coldest option.", map:"Đồng Văn, Hà Giang"},
+  {id:"ha-long", en:"Hạ Long Bay", viw:"Vịnh Hạ Long", r:"north", g:"other", name:"Ha Long Bay", vn:"Vịnh Hạ Long", cq:"Ha Long Bay", desc:"The UNESCO icon: thousands of karst islands, best on an overnight cruise. Lan Ha Bay is the quieter side.", time:"2 days / 1 night", from:"Quang Ninh, a few hours from Hanoi", dec:"Fog is common; busy and pricier in December.", map:"Vịnh Hạ Long, Quảng Ninh"},
+  {id:"ninh-binh", en:"Tràng An", viw:"Tràng An", r:"north", g:"other", name:"Ninh Binh (Trang An & Tam Coc)", vn:"Ninh Bình", cq:"Trang An Ninh Binh", desc:"\"Ha Long Bay on land\": row-boat rides through limestone caves and rivers, plus the Hang Mua climb for the dragon-ridge view.", time:"1–2 nights", from:"~2 hrs from Hanoi", dec:"Mildest of the north. Rice fields are bare this month.", map:"Tràng An, Ninh Bình"},
+  {id:"sapa", en:"Sa Pa", viw:"Sa Pa", r:"north", g:"other", name:"Sapa & Fansipan", vn:"Sa Pa", cq:"Sa Pa rice terraces", desc:"Treks through Muong Hoa valley and hill-tribe villages, and a cable car up Fansipan, the Roof of Indochina.", time:"2 nights", from:"Night bus or train from Hanoi", dec:"Frosty and moody; can hit 0°C at night.", map:"Sa Pa, Lào Cai"},
+  {id:"moc-chau", en:"Mộc Châu district", viw:"Mộc Châu", r:"north", g:"other", name:"Moc Chau Plateau", vn:"Mộc Châu", cq:"Moc Chau tea", desc:"Rolling tea hills, plum and mustard-flower fields. A weekend favourite for Hanoi locals.", time:"1–2 nights", from:"West of Hanoi", dec:"One of its prettiest months for flowers.", map:"Mộc Châu, Sơn La"},
+  {id:"pu-luong", en:"Pù Luông Nature Reserve", viw:"Khu bảo tồn thiên nhiên Pù Luông", r:"north", g:"other", name:"Pu Luong & Mai Chau", vn:"Pù Luông", cq:"Pu Luong", desc:"Valleys of stilt houses and bamboo bridges, eco-lodges and easy cycling. Gentle and relaxing.", time:"1–2 nights", from:"Southwest of Hanoi", dec:"Rice not planted yet, but still green hills.", map:"Pù Luông, Thanh Hóa"},
+  {id:"mui-ne", en:"Mũi Né", viw:"Mũi Né", r:"south", g:"south", route:true, name:"Mui Ne sand dunes", vn:"Mũi Né", cq:"Mui Ne sand dunes", desc:"Sunrise jeep tour on the White Dunes, Red Dunes at sunset, the Fairy Stream walk and the fishing village.", time:"1 night", from:"3–4 hrs by car or train from HCMC (no flights yet)", dec:"Dry and windy; great for dunes and kitesurfing.", map:"Đồi Cát Trắng, Mũi Né"},
+  {id:"can-tho", en:"Cái Răng floating market", viw:"Chợ nổi Cái Răng", r:"south", g:"south", route:true, name:"Can Tho floating market", vn:"Chợ nổi Cái Răng", cq:"Cai Rang floating market", desc:"The Mekong Delta at its best: Cai Rang floating market at dawn, then canal boat rides and fruit orchards.", time:"1 night", from:"Fly direct from Hanoi (~2h10), or ~3.5 hrs from HCMC", dec:"Dry season, easy boat days.", map:"Chợ nổi Cái Răng, Cần Thơ"},
+  {id:"ben-tre", en:"Bến Tre", viw:"Bến Tre", r:"south", g:"south", name:"Ben Tre coconut canals", vn:"Bến Tre", cq:"Ben Tre coconut", desc:"Sampan rides through coconut-palm canals, local workshops and orchards. The easy Mekong taster.", time:"Day trip", from:"Close to HCMC", dec:"Good choice if Can Tho doesn't fit.", map:"Bến Tre"},
+  {id:"tra-su", en:"", viw:"Rừng tràm Trà Sư", r:"south", g:"south", name:"Tra Su Cassia Forest", vn:"Rừng tràm Trà Sư", cq:"Tra Su", desc:"Flooded melaleuca forest explored by small boat under a green duckweed carpet, with lots of birdlife.", time:"Half day", from:"An Giang, pair with Can Tho", dec:"Still green after the flood season.", map:"Rừng tràm Trà Sư, An Giang"},
+  {id:"can-gio", en:"Cần Giờ Mangrove Forest", viw:"Rừng Sác", r:"south", g:"south", name:"Can Gio Mangrove Forest", vn:"Rừng Sác Cần Giờ", cq:"Can Gio mangrove", desc:"UNESCO biosphere reserve inside HCMC: boat rides through mangroves, monkey island and a bat swamp.", time:"Day trip", from:"~2 hrs from central HCMC", dec:"Easy first-days trip.", map:"Rừng Sác, Cần Giờ"},
+  {id:"cat-tien", en:"Cát Tiên National Park", viw:"Vườn quốc gia Cát Tiên", r:"south", g:"south", name:"Cat Tien National Park", vn:"Vườn quốc gia Cát Tiên", cq:"Cat Tien National Park", desc:"Real lowland rainforest: jungle treks, cycling, gibbon and bear rescue centres, Crocodile Lake.", time:"1–2 nights", from:"~4 hrs from HCMC", dec:"Dry season means much better trails.", map:"Vườn quốc gia Cát Tiên"},
+  {id:"da-lat", en:"Da Lat", viw:"Đà Lạt", r:"south", g:"south", name:"Da Lat highlands", vn:"Đà Lạt", cq:"Dalat Vietnam", desc:"Pine forests, waterfalls (Datanla, Pongour), lakes, coffee farms, canyoning and Langbiang peak.", time:"2–3 nights", from:"Fly ~50 min from HCMC; direct flights to Hanoi too", dec:"Wild sunflower season; cool 15–24°C.", map:"Đà Lạt, Lâm Đồng"},
+  {id:"ba-den", en:"Bà Đen Mountain", viw:"Núi Bà Đen", r:"south", g:"south", name:"Ba Den Mountain + Cu Chi", vn:"Núi Bà Đen", cq:"Ba Den mountain", desc:"Cable car up the south's highest peak for views over the plains, combined with the Cu Chi Tunnels the same day.", time:"Day trip", from:"Tay Ninh, northwest of HCMC", dec:"Clear dry-season views.", map:"Núi Bà Đen, Tây Ninh"}
 ];
 const LEGS = [
   {title:"South, part 1", sub:"HCMC and Mui Ne · 29 Nov – 1 Dec", days:[
@@ -178,34 +179,63 @@ try{ const v = JSON.parse(localStorage.getItem(KEY) || "[]"); if(Array.isArray(v
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify([...mine])); }catch(e){} }
 
 const photoCache = {};
+const BAD = /satellite|landsat|nasa|iss0|\bmap\b|locator|location|flag|logo|coat of arms|emblem|diagram|chart|icon|seal of|banknote|stamp/i;
+const thumbs = pages => Object.values(pages || {})
+  .filter(pg => pg.imageinfo && pg.imageinfo[0] && pg.imageinfo[0].thumburl && /\.(jpe?g)$/i.test(pg.title) && !BAD.test(pg.title))
+  .map(pg => ({ src: pg.imageinfo[0].thumburl, href: pg.imageinfo[0].descriptionurl, title: pg.title.replace(/^File:/,"").replace(/\.[a-z]+$/i,"") }));
+async function getJSON(url){ const r = await fetch(url); if(!r.ok) throw new Error(r.status); return r.json(); }
+async function fromArticle(host, title){
+  if(!title) return [];
+  const base = "https://" + host + "/w/api.php?action=query&format=json&origin=*&redirects=1&titles=" + encodeURIComponent(title);
+  const out = [];
+  try{ // lead image first
+    const d = await getJSON(base + "&prop=pageimages&piprop=thumbnail|name&pithumbsize=800");
+    const pg = Object.values((d.query && d.query.pages) || {})[0];
+    if(pg && pg.thumbnail && pg.pageimage && /\.(jpe?g)$/i.test(pg.pageimage)) out.push({ src: pg.thumbnail.source, href: "https://commons.wikimedia.org/wiki/File:" + encodeURIComponent(pg.pageimage), title: pg.pageimage });
+  }catch(e){}
+  try{ // other photos used in the article
+    const d = await getJSON(base + "&generator=images&gimlimit=30&prop=imageinfo&iiprop=url&iiurlwidth=640");
+    out.push(...thumbs(d.query && d.query.pages));
+  }catch(e){}
+  return out;
+}
+async function fromSearch(q){
+  try{
+    const d = await getJSON("https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=6&gsrlimit=12&gsrsearch=" +
+      encodeURIComponent(q + " filetype:bitmap") + "&prop=imageinfo&iiprop=url&iiurlwidth=640");
+    const pages = d.query ? Object.values(d.query.pages).sort((a,b)=>a.index-b.index) : [];
+    return thumbs(Object.fromEntries(pages.map((pg,i)=>[i,pg])));
+  }catch(e){ return []; }
+}
+async function findPhotos(p){
+  const seen = new Set(), picked = [];
+  const add = list => { for(const im of list){ const key = im.title.toLowerCase().replace(/[^a-z0-9]/g,""); if(picked.length < 3 && !seen.has(key)){ seen.add(key); picked.push(im); } } };
+  add(await fromArticle("en.wikipedia.org", p.en));
+  if(picked.length < 3) add(await fromArticle("vi.wikipedia.org", p.viw));
+  if(picked.length < 3) add(await fromSearch(p.cq));
+  if(picked.length < 3) add(await fromSearch(p.vn));
+  return picked;
+}
 async function loadPhotos(p, box){
   try{
     let imgs = photoCache[p.id];
-    if(!imgs){
-      const url = "https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=6&gsrlimit=6&gsrsearch=" +
-        encodeURIComponent("filetype:bitmap " + p.cq) + "&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=640";
-      const res = await fetch(url);
-      const data = await res.json();
-      const pages = data.query ? Object.values(data.query.pages).sort((a,b)=>a.index-b.index) : [];
-      imgs = pages.filter(pg => pg.imageinfo && pg.imageinfo[0] && pg.imageinfo[0].thumburl).slice(0,3).map(pg => ({
-        src: pg.imageinfo[0].thumburl, href: pg.imageinfo[0].descriptionurl, title: pg.title.replace(/^File:/,"").replace(/\.[a-z]+$/i,"")
-      }));
-      photoCache[p.id] = imgs;
-    }
+    if(!imgs){ imgs = await findPhotos(p); photoCache[p.id] = imgs; }
     box.textContent = "";
     if(!imgs.length) throw new Error("none");
     box.className = "photos" + (imgs.length === 1 ? " one" : imgs.length === 2 ? " two" : "");
     imgs.forEach((im, i) => {
       const a = document.createElement("a"); a.href = im.href; a.target = "_blank"; a.rel = "noopener"; a.title = im.title;
       const img = document.createElement("img"); img.src = im.src; img.alt = p.name + " photo " + (i+1); img.loading = "lazy";
+      img.onerror = () => { a.remove(); if(!box.querySelector("img")) showFallback(p, box); };
       a.append(img); box.append(a);
     });
-  }catch(e){
-    box.textContent = "";
-    const d = document.createElement("div"); d.className = "empty";
-    const a = document.createElement("a"); a.href = googleImages(p); a.target = "_blank"; a.rel = "noopener"; a.textContent = "See photos of " + p.name + " →";
-    d.append(a); box.append(d);
-  }
+  }catch(e){ showFallback(p, box); }
+}
+function showFallback(p, box){
+  box.textContent = ""; box.className = "photos one";
+  const d = document.createElement("div"); d.className = "empty";
+  const a = document.createElement("a"); a.href = googleImages(p); a.target = "_blank"; a.rel = "noopener"; a.textContent = "See photos of " + p.name + " →";
+  d.append(a); box.append(d);
 }
 const googleImages = p => "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(p.vn + " " + p.name + " Vietnam");
 
