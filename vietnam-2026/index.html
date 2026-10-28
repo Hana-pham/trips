@@ -1,0 +1,324 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Vietnam, December 2026</title>
+<meta name="description" content="Nature spots in north and south Vietnam for our 29 Nov – 13 Dec trip, with photos and a recommended route.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Young+Serif&display=swap">
+<style>
+/* Field-guide layout: hero, region tabs, photo cards in a responsive grid, then a day-by-day route */
+:root{
+  --bg:#f5efe6; --surface:#fbf8f3; --ink:#2b211b; --muted:#76665a; --line:#e2d8cb;
+  --karst:#6f4e37; --karst-soft:#efe4d8; --sun:#c8955a; --sun-soft:#f3e3cf; --river:#8a6a4f; --shade:#ebe2d6;
+  --display:"Young Serif", Georgia, "Times New Roman", serif;
+  --body:"Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){:root{
+  --bg:#1c1714; --surface:#251e1a; --ink:#efe7df; --muted:#b3a497; --line:#3a2f28;
+  --karst:#d4b08c; --karst-soft:#3a2c22; --sun:#d9a86c; --sun-soft:#3d2f22; --river:#c9a98a; --shade:#2e2520; color-scheme:dark}}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.55}
+img{max-width:100%;display:block}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+header.hero{padding-block:48px 24px}
+.eyebrow{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--karst);font-weight:600}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(34px,7vw,60px);line-height:1.05;margin:10px 0 12px;text-wrap:balance}
+.lede{color:var(--muted);margin:0;max-width:62ch;font-size:16px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.chips span{font-size:13px;padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-variant-numeric:tabular-nums}
+nav.tabs{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+nav.tabs .wrap{display:flex;gap:6px;flex-wrap:wrap;padding-block:10px}
+.tab{font:inherit;font-weight:600;font-size:14px;padding:8px 16px;border-radius:999px;border:1px solid var(--line);background:transparent;color:var(--ink);cursor:pointer}
+.tab[aria-pressed="true"]{background:var(--karst);border-color:var(--karst);color:var(--bg)}
+button:focus-visible,a:focus-visible{outline:2px solid var(--river);outline-offset:2px}
+section.region{padding-block:28px 8px}
+.region-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+h2{font-family:var(--display);font-weight:400;font-size:clamp(26px,4vw,34px);margin:0}
+.region-head p{margin:0;color:var(--muted)}
+h3.group{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:24px 0 12px;font-weight:600}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;min-width:0}
+.card.route{border-color:var(--karst)}
+.photos{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:3px;aspect-ratio:16/10;background:var(--shade);max-width:100%}
+.photos a{display:block;overflow:hidden;position:relative;background:var(--shade)}
+.photos a:first-child{grid-row:1/3}
+.photos img{width:100%;height:100%;object-fit:cover}
+.photos.one{grid-template-columns:1fr;grid-template-rows:1fr}
+.photos.two{grid-template-rows:1fr}
+.photos.two a:first-child{grid-row:auto}
+.photos .empty{grid-column:1/-1;grid-row:1/-1;display:grid;place-items:center;color:var(--muted);font-size:13px;text-align:center;padding:16px}
+.body{padding:16px 16px 18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.title-row{display:flex;justify-content:space-between;gap:10px;align-items:start}
+.name{font-weight:700;font-size:17px;margin:0;line-height:1.3}
+.vn{display:block;font-family:var(--display);color:var(--karst);font-size:15px;font-weight:400}
+.badge{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border-radius:999px;background:var(--karst-soft);color:var(--karst);white-space:nowrap}
+.desc{margin:0}
+.facts{display:grid;gap:2px;font-size:13px;color:var(--muted)}
+.facts b{color:var(--ink);font-weight:600}
+.dec{font-size:13px;color:var(--river)}
+.actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;padding-top:6px;align-items:center}
+.actions a{font-size:13px;font-weight:600;text-decoration:none;padding:6px 11px;border-radius:8px;border:1px solid var(--line);color:var(--ink)}
+.actions a:hover{border-color:var(--karst)}
+.pick{font:inherit;font-size:14px;font-weight:600;padding:7px 14px;border-radius:999px;border:1.5px solid var(--karst);background:transparent;color:var(--karst);cursor:pointer;margin-left:auto}
+.pick[aria-pressed="true"]{background:var(--sun);border-color:var(--sun);color:#2b211b}
+section.route-sec{padding-block:40px 24px;border-top:1px solid var(--line);margin-top:32px}
+.route-intro{color:var(--muted);max-width:62ch;margin:8px 0 20px}
+.legs{display:grid;gap:28px}
+.leg h3{font-family:var(--display);font-weight:400;font-size:22px;margin:0 0 4px}
+.leg .sub{color:var(--muted);font-size:14px;margin:0 0 12px}
+.days{display:grid;gap:0;border-left:2px solid var(--karst);margin-left:6px}
+.day{position:relative;padding:0 0 18px 20px}
+.day::before{content:"";position:absolute;left:-7px;top:6px;width:12px;height:12px;border-radius:50%;background:var(--bg);border:2px solid var(--karst)}
+.day .date{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--karst);font-weight:700;font-variant-numeric:tabular-nums}
+.day .what{font-weight:600;margin:2px 0}
+.day ul{margin:4px 0 0;padding-left:18px;color:var(--muted);font-size:14px}
+.swap{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px;margin-top:8px}
+.swap h4{margin:0 0 6px;font-size:15px}
+.swap ul{margin:0;padding-left:18px;color:var(--muted);font-size:14px}
+footer{padding-block:24px 120px;color:var(--muted);font-size:13px}
+.tally{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding-bottom:env(safe-area-inset-bottom,0px);z-index:6}
+.tally .wrap{display:flex;align-items:center;gap:12px;flex-wrap:wrap;padding-block:12px}
+.tally .count{font-weight:700}
+.tally .status{font-size:13px;color:var(--muted);flex:1;min-width:0}
+.btn{font:inherit;font-size:14px;font-weight:600;padding:8px 14px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink);cursor:pointer}
+.btn.primary{background:var(--karst);border-color:var(--karst);color:var(--bg)}
+@media (max-width:420px){.grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:no-preference){.pick,.tab{transition:background .15s,color .15s}.photos img{transition:opacity .3s}}
+</style>
+</head>
+<body>
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">Vietnam · 29 Nov – 13 Dec 2026</div>
+  <h1>Where should we go?</h1>
+  <p class="lede">Every nature spot we're looking at, north and south, with photos. Tap <b>Pick</b> on the ones you'd love to do, then tap <b>Share my picks</b> at the bottom and send them to me. The recommended route is at the end.</p>
+  <div class="chips"><span>Land HCMC 29 Nov</span><span>North ~7 days</span><span>South around HCMC</span><span>Fly HCMC → Phuket 13 Dec</span></div>
+</div></header>
+
+<nav class="tabs" aria-label="Sections"><div class="wrap">
+  <button class="tab" aria-pressed="true" data-f="all">All</button>
+  <button class="tab" aria-pressed="false" data-f="north">North</button>
+  <button class="tab" aria-pressed="false" data-f="south">South</button>
+  <button class="tab" aria-pressed="false" data-f="picked">My picks</button>
+  <button class="tab" aria-pressed="false" data-f="route">Recommended route</button>
+</div></nav>
+
+<main class="wrap">
+  <div id="regions"></div>
+
+  <section class="route-sec" id="route">
+    <h2>Recommended route</h2>
+    <p class="route-intro">South → north → south, so we rest in HCMC after the long flight. Cards marked <b>On the route</b> above are the stops in this plan. Anything you pick that isn't here can be swapped in.</p>
+    <div class="legs" id="legs"></div>
+    <div class="swap">
+      <h4>Easy swaps</h4>
+      <ul>
+        <li><b>Da Lat</b> instead of Mui Ne on 30 Nov – 1 Dec, then fly Da Lat → Hanoi direct on 2 Dec.</li>
+        <li><b>Ha Giang or Sapa</b> instead of the Cao Bang days (we'd lose Ban Gioc and Nguom Ngao).</li>
+        <li><b>Ninh Binh</b> instead of Yen Tu, or as an extra night near Hanoi.</li>
+        <li><b>Can Gio, Ben Tre, or Ba Den with Cu Chi</b> as a day trip on 11 Dec.</li>
+      </ul>
+    </div>
+  </section>
+
+  <footer>Photos load from Wikimedia Commons; tap a photo to see its source and credit. Tap <b>More photos</b> on any card for Google Images.</footer>
+</main>
+
+<div class="tally"><div class="wrap">
+  <span class="count" id="count">0 picked</span>
+  <span class="status" id="status">Picks are saved on this phone.</span>
+  <button class="btn primary" id="share">Share my picks</button>
+</div></div>
+
+<script>
+const REGIONS = {
+  north: { title: "The North", note: "Cool and dry in December. Mountains get close to 0°C at night, so pack layers." },
+  south: { title: "The South", note: "Dry season, warm and sunny. Everything here is reached from HCMC." }
+};
+const GROUPS = { cb: "Cao Bang & Quang Ninh", other: "Elsewhere in the north", south: "Around Ho Chi Minh City" };
+const PLACES = [
+  {id:"ban-gioc", r:"north", g:"cb", route:true, name:"Ban Gioc Waterfall", vn:"Thác Bản Giốc", cq:"Ban Gioc waterfall", desc:"Vietnam's biggest waterfall, right on the China border. A local favourite that few foreigners reach.", time:"Half day (part of 2–3 days in Cao Bang)", from:"~360 km from Hanoi; private car or 7.5–10 hr bus", dec:"Gentler flow but clear blue water; 12–20°C.", map:"Thác Bản Giốc, Cao Bằng"},
+  {id:"nguom-ngao", r:"north", g:"cb", route:true, name:"Nguom Ngao Cave", vn:"Động Ngườm Ngao", cq:"Nguom Ngao cave", desc:"Huge limestone cave about 3 km from Ban Gioc, with around 1 km of lit walkway through the chambers.", time:"1–1.5 hours; ~45,000 VND entry", from:"3 km from Ban Gioc", dec:"Cool and damp inside; wear shoes with grip.", map:"Động Ngườm Ngao, Cao Bằng"},
+  {id:"phong-nam", r:"north", g:"cb", route:true, name:"Phong Nam Valley", vn:"Thung lũng Phong Nậm", cq:"Phong Nam valley Cao Bang", desc:"Quiet valley of rice fields and limestone peaks near Ban Gioc. Very few tourists.", time:"Half day", from:"Near Ban Gioc", dec:"Especially picturesque in December.", map:"Phong Nậm, Cao Bằng"},
+  {id:"thang-hen", r:"north", g:"cb", route:true, name:"Thang Hen Lake & Ma Phuc Pass", vn:"Hồ Thang Hen", cq:"Thang Hen lake", desc:"A chain of mountain lakes among karst peaks, reached over the winding Ma Phuc Pass switchbacks.", time:"Half day", from:"Cao Bang province", dec:"Clear, dry-season mountain views.", map:"Hồ Thang Hen, Cao Bằng"},
+  {id:"bai-tu-long", r:"north", g:"cb", route:true, name:"Bai Tu Long Bay cruise", vn:"Vịnh Bái Tử Long", cq:"Bai Tu Long Bay", desc:"The same limestone islands as Ha Long Bay with far fewer boats. Overnight cruise with kayaking and caves.", time:"2 days / 1 night", from:"Quang Ninh, a few hours from Hanoi", dec:"Misty mornings; bring a windproof jacket for the deck.", map:"Vịnh Bái Tử Long, Quảng Ninh"},
+  {id:"yen-tu", r:"north", g:"cb", route:true, name:"Yen Tu Mountain", vn:"Núi Yên Tử", cq:"Yen Tu", desc:"Cable car up a forested mountain to Buddhist temples and stupas, some over 700 years old.", time:"Half day", from:"Between Ha Long and Hanoi", dec:"Cool and calm; good year-end visit.", map:"Yên Tử, Quảng Ninh"},
+  {id:"binh-lieu", r:"north", g:"cb", name:"Binh Lieu border trail", vn:"Bình Liêu", cq:"Binh Lieu Quang Ninh", desc:"Remote mountain district with a scenic trail along the border, Dao and Tay villages and waterfalls.", time:"1–2 days", from:"Quang Ninh, ~4 hrs from Hanoi", dec:"White reed grass season runs into early winter.", map:"Bình Liêu, Quảng Ninh"},
+  {id:"ba-be", r:"north", g:"cb", name:"Ba Be Lake", vn:"Hồ Ba Bể", cq:"Ba Be lake", desc:"Vietnam's largest natural lake, inside a national park. Boat trips, caves and homestays with Tay families.", time:"1–2 nights", from:"Bac Kan, pairs with Cao Bang", dec:"Quiet and uncrowded.", map:"Hồ Ba Bể, Bắc Kạn"},
+  {id:"ha-giang", r:"north", g:"other", name:"Ha Giang Loop", vn:"Hà Giang", cq:"Ma Pi Leng pass", desc:"3–4 day motorbike loop (ride pillion with an easy rider) through Ma Pi Leng Pass, the Nho Que River canyon and the Dong Van plateau.", time:"3–4 days", from:"Overnight bus from Hanoi", dec:"Buckwheat flower season. The coldest option.", map:"Đồng Văn, Hà Giang"},
+  {id:"ha-long", r:"north", g:"other", name:"Ha Long Bay", vn:"Vịnh Hạ Long", cq:"Ha Long Bay", desc:"The UNESCO icon: thousands of karst islands, best on an overnight cruise. Lan Ha Bay is the quieter side.", time:"2 days / 1 night", from:"Quang Ninh, a few hours from Hanoi", dec:"Fog is common; busy and pricier in December.", map:"Vịnh Hạ Long, Quảng Ninh"},
+  {id:"ninh-binh", r:"north", g:"other", name:"Ninh Binh (Trang An & Tam Coc)", vn:"Ninh Bình", cq:"Trang An Ninh Binh", desc:"\"Ha Long Bay on land\": row-boat rides through limestone caves and rivers, plus the Hang Mua climb for the dragon-ridge view.", time:"1–2 nights", from:"~2 hrs from Hanoi", dec:"Mildest of the north. Rice fields are bare this month.", map:"Tràng An, Ninh Bình"},
+  {id:"sapa", r:"north", g:"other", name:"Sapa & Fansipan", vn:"Sa Pa", cq:"Sa Pa rice terraces", desc:"Treks through Muong Hoa valley and hill-tribe villages, and a cable car up Fansipan, the Roof of Indochina.", time:"2 nights", from:"Night bus or train from Hanoi", dec:"Frosty and moody; can hit 0°C at night.", map:"Sa Pa, Lào Cai"},
+  {id:"moc-chau", r:"north", g:"other", name:"Moc Chau Plateau", vn:"Mộc Châu", cq:"Moc Chau tea", desc:"Rolling tea hills, plum and mustard-flower fields. A weekend favourite for Hanoi locals.", time:"1–2 nights", from:"West of Hanoi", dec:"One of its prettiest months for flowers.", map:"Mộc Châu, Sơn La"},
+  {id:"pu-luong", r:"north", g:"other", name:"Pu Luong & Mai Chau", vn:"Pù Luông", cq:"Pu Luong", desc:"Valleys of stilt houses and bamboo bridges, eco-lodges and easy cycling. Gentle and relaxing.", time:"1–2 nights", from:"Southwest of Hanoi", dec:"Rice not planted yet, but still green hills.", map:"Pù Luông, Thanh Hóa"},
+  {id:"mui-ne", r:"south", g:"south", route:true, name:"Mui Ne sand dunes", vn:"Mũi Né", cq:"Mui Ne sand dunes", desc:"Sunrise jeep tour on the White Dunes, Red Dunes at sunset, the Fairy Stream walk and the fishing village.", time:"1 night", from:"3–4 hrs by car or train from HCMC (no flights yet)", dec:"Dry and windy; great for dunes and kitesurfing.", map:"Đồi Cát Trắng, Mũi Né"},
+  {id:"can-tho", r:"south", g:"south", route:true, name:"Can Tho floating market", vn:"Chợ nổi Cái Răng", cq:"Cai Rang floating market", desc:"The Mekong Delta at its best: Cai Rang floating market at dawn, then canal boat rides and fruit orchards.", time:"1 night", from:"Fly direct from Hanoi (~2h10), or ~3.5 hrs from HCMC", dec:"Dry season, easy boat days.", map:"Chợ nổi Cái Răng, Cần Thơ"},
+  {id:"ben-tre", r:"south", g:"south", name:"Ben Tre coconut canals", vn:"Bến Tre", cq:"Ben Tre coconut", desc:"Sampan rides through coconut-palm canals, local workshops and orchards. The easy Mekong taster.", time:"Day trip", from:"Close to HCMC", dec:"Good choice if Can Tho doesn't fit.", map:"Bến Tre"},
+  {id:"tra-su", r:"south", g:"south", name:"Tra Su Cassia Forest", vn:"Rừng tràm Trà Sư", cq:"Tra Su", desc:"Flooded melaleuca forest explored by small boat under a green duckweed carpet, with lots of birdlife.", time:"Half day", from:"An Giang, pair with Can Tho", dec:"Still green after the flood season.", map:"Rừng tràm Trà Sư, An Giang"},
+  {id:"can-gio", r:"south", g:"south", name:"Can Gio Mangrove Forest", vn:"Rừng Sác Cần Giờ", cq:"Can Gio mangrove", desc:"UNESCO biosphere reserve inside HCMC: boat rides through mangroves, monkey island and a bat swamp.", time:"Day trip", from:"~2 hrs from central HCMC", dec:"Easy first-days trip.", map:"Rừng Sác, Cần Giờ"},
+  {id:"cat-tien", r:"south", g:"south", name:"Cat Tien National Park", vn:"Vườn quốc gia Cát Tiên", cq:"Cat Tien National Park", desc:"Real lowland rainforest: jungle treks, cycling, gibbon and bear rescue centres, Crocodile Lake.", time:"1–2 nights", from:"~4 hrs from HCMC", dec:"Dry season means much better trails.", map:"Vườn quốc gia Cát Tiên"},
+  {id:"da-lat", r:"south", g:"south", name:"Da Lat highlands", vn:"Đà Lạt", cq:"Da Lat", desc:"Pine forests, waterfalls (Datanla, Pongour), lakes, coffee farms, canyoning and Langbiang peak.", time:"2–3 nights", from:"Fly ~50 min from HCMC; direct flights to Hanoi too", dec:"Wild sunflower season; cool 15–24°C.", map:"Đà Lạt, Lâm Đồng"},
+  {id:"ba-den", r:"south", g:"south", name:"Ba Den Mountain + Cu Chi", vn:"Núi Bà Đen", cq:"Ba Den mountain Tay Ninh", desc:"Cable car up the south's highest peak for views over the plains, combined with the Cu Chi Tunnels the same day.", time:"Day trip", from:"Tay Ninh, northwest of HCMC", dec:"Clear dry-season views.", map:"Núi Bà Đen, Tây Ninh"}
+];
+const LEGS = [
+  {title:"South, part 1", sub:"HCMC and Mui Ne · 29 Nov – 1 Dec", days:[
+    {d:"Sun 29 Nov", w:"Land in HCMC", n:["Check in and rest after the flight from Sydney","Easy street-food dinner near the hotel"]},
+    {d:"Mon 30 Nov", w:"Tailor, then Mui Ne", n:["Morning: order clothes at the tailor (pick up 11–12 Dec)","Drive 3–4 hrs to Mui Ne","Fairy Stream walk, Red Dunes at sunset"]},
+    {d:"Tue 1 Dec", w:"Mui Ne → HCMC", n:["4:30am White Dunes sunrise jeep tour","Fishing village and basket boats","Drive back to HCMC, early night"]}
+  ]},
+  {title:"The North", sub:"Cao Bang and Quang Ninh · 2 – 8 Dec", days:[
+    {d:"Wed 2 Dec", w:"Fly HCMC → Hanoi", n:["Midday flight, about 2 hrs","Old Quarter dinner: pho, bun cha"]},
+    {d:"Thu 3 Dec", w:"Drive to Cao Bang", n:["Early start with a private driver","Ma Phuc Pass viewpoints in the afternoon","Stay near Ban Gioc"]},
+    {d:"Fri 4 Dec", w:"Ban Gioc + Nguom Ngao", n:["7:30am Ban Gioc Waterfall before the crowds","Nguom Ngao Cave, late morning","Phong Nam Valley in the afternoon"]},
+    {d:"Sat 5 Dec", w:"Thang Hen → Ha Long", n:["Thang Hen Lake in the morning","Long drive to Ha Long via Lang Son"]},
+    {d:"Sun 6 Dec", w:"Bai Tu Long Bay cruise", n:["Board around midday","Kayaking and caves","Sunset on deck, overnight on the boat"]},
+    {d:"Mon 7 Dec", w:"Sunrise on the bay", n:["Tai chi and brunch on board","Back to port, relaxed afternoon in Ha Long"]},
+    {d:"Tue 8 Dec", w:"Yen Tu → Hanoi", n:["Yen Tu cable car and temples","Drive to Hanoi, last night in the north"]}
+  ]},
+  {title:"South, part 2", sub:"Can Tho and HCMC · 9 – 13 Dec", days:[
+    {d:"Wed 9 Dec", w:"Fly Hanoi → Can Tho", n:["Direct, about 2 hrs 10 min","Ninh Kieu riverside and night market"]},
+    {d:"Thu 10 Dec", w:"Floating market → HCMC", n:["5:30am Cai Rang floating market","Canals and orchards by small boat","Drive about 3.5 hrs to HCMC"]},
+    {d:"Fri 11 Dec", w:"HCMC", n:["Tailor fitting","Shopping and food"]},
+    {d:"Sat 12 Dec", w:"HCMC", n:["Collect tailoring","Pack (20 kg VietJet allowance)"]},
+    {d:"Sun 13 Dec", w:"Fly HCMC → Phuket", n:["VJ809"]}
+  ]}
+];
+
+const KEY = "vn-dec-2026-picks";
+let mine = new Set();
+try{ const v = JSON.parse(localStorage.getItem(KEY) || "[]"); if(Array.isArray(v)) mine = new Set(v); }catch(e){}
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify([...mine])); }catch(e){} }
+
+const photoCache = {};
+async function loadPhotos(p, box){
+  try{
+    let imgs = photoCache[p.id];
+    if(!imgs){
+      const url = "https://commons.wikimedia.org/w/api.php?action=query&format=json&origin=*&generator=search&gsrnamespace=6&gsrlimit=6&gsrsearch=" +
+        encodeURIComponent("filetype:bitmap " + p.cq) + "&prop=imageinfo&iiprop=url|extmetadata&iiurlwidth=640";
+      const res = await fetch(url);
+      const data = await res.json();
+      const pages = data.query ? Object.values(data.query.pages).sort((a,b)=>a.index-b.index) : [];
+      imgs = pages.filter(pg => pg.imageinfo && pg.imageinfo[0] && pg.imageinfo[0].thumburl).slice(0,3).map(pg => ({
+        src: pg.imageinfo[0].thumburl, href: pg.imageinfo[0].descriptionurl, title: pg.title.replace(/^File:/,"").replace(/\.[a-z]+$/i,"")
+      }));
+      photoCache[p.id] = imgs;
+    }
+    box.textContent = "";
+    if(!imgs.length) throw new Error("none");
+    box.className = "photos" + (imgs.length === 1 ? " one" : imgs.length === 2 ? " two" : "");
+    imgs.forEach((im, i) => {
+      const a = document.createElement("a"); a.href = im.href; a.target = "_blank"; a.rel = "noopener"; a.title = im.title;
+      const img = document.createElement("img"); img.src = im.src; img.alt = p.name + " photo " + (i+1); img.loading = "lazy";
+      a.append(img); box.append(a);
+    });
+  }catch(e){
+    box.textContent = "";
+    const d = document.createElement("div"); d.className = "empty";
+    const a = document.createElement("a"); a.href = googleImages(p); a.target = "_blank"; a.rel = "noopener"; a.textContent = "See photos of " + p.name + " →";
+    d.append(a); box.append(d);
+  }
+}
+const googleImages = p => "https://www.google.com/search?tbm=isch&q=" + encodeURIComponent(p.vn + " " + p.name + " Vietnam");
+
+let filter = "all";
+function card(p){
+  const c = document.createElement("article"); c.className = "card" + (p.route ? " route" : ""); c.id = "place-" + p.id;
+  const ph = document.createElement("div"); ph.className = "photos";
+  const e = document.createElement("div"); e.className = "empty"; e.textContent = "Loading photos…"; ph.append(e);
+  c.append(ph); loadPhotos(p, ph);
+  const b = document.createElement("div"); b.className = "body";
+  const tr = document.createElement("div"); tr.className = "title-row";
+  const h = document.createElement("h4"); h.className = "name"; h.textContent = p.name;
+  const vn = document.createElement("span"); vn.className = "vn"; vn.textContent = p.vn; h.append(vn);
+  tr.append(h);
+  if(p.route){ const bd = document.createElement("span"); bd.className = "badge"; bd.textContent = "On the route"; tr.append(bd); }
+  const d = document.createElement("p"); d.className = "desc"; d.textContent = p.desc;
+  const f = document.createElement("div"); f.className = "facts";
+  [["Time", p.time], ["Getting there", p.from]].forEach(([k,v]) => { const s = document.createElement("span"); s.append(k + ": "); const bb = document.createElement("b"); bb.textContent = v; s.append(bb); f.append(s); });
+  const dec = document.createElement("div"); dec.className = "dec"; dec.textContent = "December: " + p.dec;
+  const act = document.createElement("div"); act.className = "actions";
+  [["More photos", googleImages(p)], ["Video", "https://www.youtube.com/results?search_query=" + encodeURIComponent(p.vn + " " + p.name + " Vietnam travel")], ["Map", "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(p.map)]]
+    .forEach(([l,u]) => { const a = document.createElement("a"); a.href = u; a.target = "_blank"; a.rel = "noopener"; a.textContent = l; act.append(a); });
+  const pk = document.createElement("button"); pk.className = "pick"; pk.dataset.id = p.id;
+  act.append(pk); setPick(pk);
+  pk.addEventListener("click", () => { mine.has(p.id) ? mine.delete(p.id) : mine.add(p.id); save(); setPick(pk); updateCount(); if(filter === "picked") render(); });
+  b.append(tr, d, f, dec, act); c.append(b);
+  return c;
+}
+function setPick(btn){ const on = mine.has(btn.dataset.id); btn.setAttribute("aria-pressed", on ? "true" : "false"); btn.textContent = on ? "Picked ✓" : "Pick"; }
+function updateCount(){ document.getElementById("count").textContent = mine.size + " picked"; }
+
+function render(){
+  const root = document.getElementById("regions"); root.textContent = "";
+  document.getElementById("route").hidden = !(filter === "all" || filter === "route");
+  if(filter === "route"){ document.getElementById("route").scrollIntoView(); return; }
+  for(const r of ["north","south"]){
+    if((filter === "north" || filter === "south") && filter !== r) continue;
+    let items = PLACES.filter(p => p.r === r);
+    if(filter === "picked") items = items.filter(p => mine.has(p.id));
+    if(!items.length) continue;
+    const sec = document.createElement("section"); sec.className = "region";
+    const head = document.createElement("div"); head.className = "region-head";
+    const h2 = document.createElement("h2"); h2.textContent = REGIONS[r].title;
+    const note = document.createElement("p"); note.textContent = REGIONS[r].note;
+    head.append(h2, note); sec.append(head);
+    const groups = [...new Set(items.map(p => p.g))];
+    for(const g of groups){
+      if(groups.length > 1 || r === "north"){ const gh = document.createElement("h3"); gh.className = "group"; gh.textContent = GROUPS[g]; sec.append(gh); }
+      const grid = document.createElement("div"); grid.className = "grid";
+      items.filter(p => p.g === g).forEach(p => grid.append(card(p)));
+      sec.append(grid);
+    }
+    root.append(sec);
+  }
+  if(filter === "picked" && !root.children.length){
+    const p = document.createElement("p"); p.className = "lede"; p.style.padding = "32px 0";
+    p.textContent = "Nothing picked yet. Go to All and tap Pick on anything that looks good.";
+    root.append(p);
+  }
+}
+function renderRoute(){
+  const legs = document.getElementById("legs");
+  for(const L of LEGS){
+    const el = document.createElement("div"); el.className = "leg";
+    const h = document.createElement("h3"); h.textContent = L.title;
+    const s = document.createElement("p"); s.className = "sub"; s.textContent = L.sub;
+    const days = document.createElement("div"); days.className = "days";
+    for(const d of L.days){
+      const dy = document.createElement("div"); dy.className = "day";
+      const dt = document.createElement("div"); dt.className = "date"; dt.textContent = d.d;
+      const w = document.createElement("div"); w.className = "what"; w.textContent = d.w;
+      const ul = document.createElement("ul"); d.n.forEach(t => { const li = document.createElement("li"); li.textContent = t; ul.append(li); });
+      dy.append(dt, w, ul); days.append(dy);
+    }
+    el.append(h, s, days); legs.append(el);
+  }
+}
+
+document.querySelectorAll(".tab").forEach(b => b.addEventListener("click", () => {
+  filter = b.dataset.f;
+  document.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-pressed", x === b ? "true" : "false"));
+  render();
+}));
+
+document.getElementById("share").addEventListener("click", async () => {
+  const picked = PLACES.filter(p => mine.has(p.id));
+  const status = document.getElementById("status");
+  if(!picked.length){ status.textContent = "Pick a few places first."; return; }
+  const text = "My Vietnam picks:\n" + picked.map(p => "• " + p.name + " (" + (p.r === "north" ? "North" : "South") + ")").join("\n");
+  if(navigator.share){
+    try{ await navigator.share({ title: "My Vietnam picks", text }); status.textContent = "Shared."; return; }catch(e){ if(e && e.name === "AbortError") return; }
+  }
+  try{ await navigator.clipboard.writeText(text); status.textContent = "Copied. Paste it into a message to Hana."; }
+  catch(e){ status.textContent = picked.map(p => p.name).join(" · "); }
+});
+
+updateCount(); renderRoute(); render();
+</script>
+</body>
+</html>
